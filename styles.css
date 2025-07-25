@@ -53,60 +53,63 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-menu li {
+    position: relative;
+    isolation: isolate;
 }
 
 .nav-menu a {
     text-decoration: none;
     color: #333;
     font-weight: 500;
-    padding: 10px 15px;
+    padding: 8px 16px;
     border-radius: 25px;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    display: block;
+    white-space: nowrap;
 }
 
 .nav-menu a::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, #2f8d46 0%, #1e5f32 100%);
     border-radius: 25px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
     opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
 }
 
 .nav-menu a:hover::before {
-    left: 0;
     opacity: 1;
-}
-
-.nav-menu a:hover::before {
-    left: 0;
-    opacity: 1;
+    transform: scaleX(1);
 }
 
 .nav-menu a:hover {
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(47, 141, 70, 0.3);
+    box-shadow: 0 3px 10px rgba(47, 141, 70, 0.2);
 }
 
-/* Ensure default state */
+/* Ensure default state - removed translateY to prevent layout shifts */
 .nav-menu a:not(:hover) {
     color: #333;
-    transform: translateY(0);
     box-shadow: none;
 }
 
 .nav-menu a:not(:hover)::before {
-    left: -100%;
     opacity: 0;
+    transform: scaleX(0);
 }
 
 /* .burger {
