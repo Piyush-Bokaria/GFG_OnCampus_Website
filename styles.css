@@ -456,11 +456,18 @@ body {
 }
 
 .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 500px;
     position: relative;
     bottom: 30px;
+}
+
+.contact-info{
+    display:flex;
+    gap:300px;
+    position: relative;
+    left:50px;
 }
 
 .contact-item {
